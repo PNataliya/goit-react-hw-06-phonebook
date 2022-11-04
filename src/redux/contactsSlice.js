@@ -11,30 +11,30 @@ const contactsSlice = createSlice({
   name: 'contacts',
   initialState: contactsInitialState,
   reducers: {
-    addContact(state, action) {
-      console.log('state', state);
-      console.log(action);
+    // addContact(state, action) {
+    //   console.log('state', state);
+    //   console.log(action);
 
-      state.contacts.push({
-        id: nanoid(),
-        name: action.payload.name,
-        number: action.payload.number,
-      });
-    },
-    // addContact: {
-    //   reducer(state, action) {
-    //     return [...state, action.payload];
-    //   },
-    //   prepare(name, number) {
-    //     return {
-    //       payload: {
-    //         id: nanoid(),
-    //         name: name,
-    //         number: number,
-    //       },
-    //     };
-    //   },
+    //   state.contacts.push({
+    //     id: nanoid(),
+    //     name: action.payload.name,
+    //     number: action.payload.number,
+    //   });
     // },
+    addContact: {
+      reducer(state, action) {
+        return [...state, action.payload];
+      },
+      prepare(name, number) {
+        return {
+          payload: {
+            id: nanoid(),
+            name: name,
+            number: number,
+          },
+        };
+      },
+    },
 
     deleteContact(state, action) {
       const index = state.findIndex(contact => contact.id === action.payload);

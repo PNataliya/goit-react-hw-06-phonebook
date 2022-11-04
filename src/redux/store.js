@@ -1,4 +1,5 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import { devToolsEnhancer } from '@redux-devtools/extension';
 import {
   persistStore,
   persistReducer,
@@ -37,4 +38,5 @@ export const store = configureStore({
     }),
 });
 
-export const persistor = persistStore(store);
+const enhancer = devToolsEnhancer();
+export const persistor = persistStore(store, enhancer);
