@@ -1,16 +1,25 @@
+import { ContactForm } from './ContactForm/ContactForm';
+import { ContactList } from './ContactList/ContactList';
+import { Filter } from './Filter/Filter';
+
+import { AiOutlineRead } from 'react-icons/ai';
+import { Container, ContainerTitle, SubHeading, IconTitle } from './App.styled';
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <Container>
+      <ContainerTitle>
+        Phonebook
+        <IconTitle>
+          <AiOutlineRead />
+        </IconTitle>
+      </ContainerTitle>
+      <ContactForm />
+
+      <SubHeading>Contacts</SubHeading>
+      <Filter />
+
+      <ContactList />
+    </Container>
   );
 };
