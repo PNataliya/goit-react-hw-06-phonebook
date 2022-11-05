@@ -1,12 +1,8 @@
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
-import { deleteContact } from '../../redux/contactsSlice';
-import { handleMouseDown, handleMouseUp } from '../../utils/HandleMouse';
 import { ContactData, Number, Button, Icon } from './Contact.styled';
 import { FaTrash, FaUserTie } from 'react-icons/fa';
 
-export const Contact = ({ name, number, contactId }) => {
-  const dispatch = useDispatch();
+export const Contact = ({ name, number, onDeleteContact }) => {
   return (
     <>
       <ContactData>
@@ -17,12 +13,7 @@ export const Contact = ({ name, number, contactId }) => {
       </ContactData>
       <ContactData>
         <Number>{number}</Number>
-        <Button
-          type="button"
-          onClick={() => dispatch(deleteContact(contactId))}
-          onMouseDown={handleMouseDown}
-          onMouseUp={handleMouseUp}
-        >
+        <Button type="button" onClick={onDeleteContact}>
           <FaTrash />
         </Button>
       </ContactData>
@@ -33,5 +24,4 @@ export const Contact = ({ name, number, contactId }) => {
 Contact.prototype = {
   name: PropTypes.string.isRequired,
   number: PropTypes.string.isRequired,
-  contactId: PropTypes.string.isRequired,
 };
