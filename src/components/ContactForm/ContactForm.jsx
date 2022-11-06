@@ -30,13 +30,19 @@ export const ContactForm = () => {
       number,
     };
 
-    contacts.some(contact => contact.name.toLowerCase() === name.toLowerCase())
-      ? Report.warning(
-          `${name}`,
-          'This user is already in the contact list.',
-          'OK'
-        )
-      : dispach(addContact(newContact));
+    if (
+      !contacts.some(
+        contact => contact.name.toLowerCase() === name.toLowerCase()
+      )
+    ) {
+      dispach(addContact(newContact));
+    } else {
+      Report.warning(
+        `${name}`,
+        'This user is already in the contact list.',
+        'OK'
+      );
+    }
 
     resetForm();
   };
